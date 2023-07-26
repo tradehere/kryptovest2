@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Kryptovest.COM</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css/>
+      <style type="text/css">
+       
+     @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap");
+        *{
+          Margin: 0;
+          Padding: 0;
+          Outline: none;
+          Box-sizing: border-box;
+          Font-family: "Montserrat", sans-serif;
+        }
+        Body{
+          Background: #0c0c0c;
+        }
+        Nav{
+          Background: #053685;
+          Display: flex;
+          Flex-wrap: wrap;
+          Align-items: center;
+          Justify-content: space-between;
+          Height: 70px;
+          Padding: 0 100px;
+        }
+        Nav .logo{
+          Color: #fff;
+          Font-size: 30px;
+          Font-weight: 600;
+          Letter-spacing: -1px;
+        }
+        Nav .nav-items{
+          Display: flex;
+          Flex: 1;
+          Padding: 0 0 0 40px;
+        }
+        Nav .nav-items li{
+          List-style: none;
+          Padding: 0 15px;
+        }
+        Nav .nav-items li a{
+          Color: #fff;
+          Font-size: 18px;
+          Font-weight: 500;
+          Text-decoration: none;
+        }
+        Nav .nav-items li a:hover{
+          Color: #5e80dd;
+        }
+        Nav form{
+          Display: flex;
+          Height: 40px;
+          Padding: 2px;
+          Background: #f7f8fa;
+          Min-width: 18%!important;
+          Border-radius: 2px;
+          Border: 1px solid rgba(253, 253, 253, 0.925);
+        }
+        Nav form .search-data{
+          Width: 100%;
+          Height: 100%;
+          Padding: 0 10px;
+          Color: #fff;
+          Font-size: 17px;
+          Border: none;
+          Font-weight: 500;
+          Background: none;
+        }
+        Nav form button{
+          Padding: 0 15px;
+          Color: #fff;
+          Font-size: 17px;
+          Background: #fff;
+          Border: none;
+          Border-radius: 2px;
+          Cursor: pointer;
+        }
+        Nav form button:hover{
+          Background: #d6d9daea;
+        }
+        Nav .menu-icon,
+        Nav .cancel-icon,
+        Nav .search-icon{
+          Width: 40px;
+          Text-align: center;
+          Margin: 0 50px;
+          Font-size: 18px;
+          Color: #000;
+          Cursor: pointer;
+          Display: none;
+        }
+        Nav .menu-icon span,
+        Nav .cancel-icon,
+        Nav .search-icon{
+          Display: none;
+        }
+        @media (max-width: 1245px) {
+          Nav{
+            Padding: 0 50px;
+          }
+        }
+        @media (max-width: 1140px){
+          Nav{
+            Padding: 0px;
+          }
+          Nav .logo{
+            Flex: 2;
+            Text-align: center;
+          }
+          Nav .nav-items{
+            Position: fixed;
+            z-index: 99;
+            top: 70px;
+            width: 100%;
+            left: -100%;
+            height: 100%;
+            padding: 10px 50px 0 50px;
+            text-align: center;
+            background: #14181f;
+            display: inline-block;
+            transition: left 0.3s ease;
+          }
+          Nav .nav-items.active{
+            Left: 0px;
+          }
+          Nav .nav-items li{
+            Line-height: 40px;
+            Margin: 30px 0;
+          }
+          Nav .nav-items li a{
+            Font-size: 20px;
+          }
+          Nav form{
+            Position: absolute;
+            Top: 80px;
+            Right: 50px;
+            Opacity: 0;
+            Pointer-events: none;
+            Transition: top 0.3s ease, opacity 0.1s ease;
+          }
+          Nav form.active{
+            Top: 95px;
+            Opacity: 1;
+            Pointer-events: auto;
+          }
+          Nav form:before{
+            Position: absolute;
+            Content: “”;
+            Top: -13px;
+            Right: 0px;
+            Width: 0;
+            Height: 0;
+            z-index: -1;
+            border: 10px solid transparent;
+            border-bottom-color: #1e232b;
+            margin: -20px 0 0;
+          }
+          Nav form:after{
+            Position: absolute;
+            Content: '';
+            Height: 60px;
+            Padding: 2px;
+            Background: #1e232b;
+            Border-radius: 2px;
+            Min-width: calc(100% + 20px);
+            z-index: -2;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+          }
+          Nav .menu-icon{
+            Display: block;
+          }
+          Nav .search-icon,
+          Nav .menu-icon span{
+            Display: block;
+          }
+          Nav .menu-icon span.hide,
+          Nav .search-icon.hide{
+            Display: none;
+          }
+          Nav .cancel-icon.show{
+            Display: block;
+          }
+        }
+        .content{
+          Position: absolute;
+          Top: 50%;
+          Left: 50%;
+          Text-align: center;
+          Transform: translate(-50%, -50%);
+        }
+        .content header{
+          Font-size: 30px;
+          Font-weight: 700;
+        }
+        .content .text{
+          Font-size: 30px;
+          Font-weight: 700;
+        }
+        .space{
+          Margin: 10px 0;
+        }
+        Nav .logo.space{
+          Color: red;
+          Padding: 0 5px 0 0;
+        }
+        @media (max-width: 980px){
+          Nav .menu-icon,
+          Nav .cancel-icon,
+          Nav .search-icon{
+            Margin: 0 20px;
+          }
+          Nav form{
+            Right: 30px;
+          }
+        }
+        @media (max-width: 350px){
+          Nav .menu-icon,
+          Nav .cancel-icon,
+          Nav .search-icon{
+            Margin: 0 10px;
+            Font-size: 16px;
+          }
+        }
+        .content{
+          Position: absolute;
+          Top: 50%;
+          Left: 50%;
+          Transform: translate(-50%, -50%);
+        }
+        .content header{
+          Font-size: 30px;
+          Font-weight: 700;
+        }
+        .content .text{
+          Font-size: 30px;
+          Font-weight: 700;
+        }
+        .content .space{
+          Margin: 10px 0;
+        }
+.jumping-image {
+  Width: 130%;
+  Height: 170%;
+  Background-image: url("");
+  Background-size: cover;
+  Animation: jumpAnimation 1s infinite;
+}
+
+@keyframes jumpAnimation {
+  0% {
+    Transform: translateY(0);
+  }
+  50% {
+    Transform: translateY(-30px);
+  }
+  100% {
+    Transform: translateY(0);
+  }
+}
+.jumping-image{
+  margin-left: 10%;
+  position: absolute;
+  justify-content: middle;
+  align-items: center;
+  height: 200px;
+  width: 150px;
+}
+.her{
+  margin-top: 10%;
+  margin-left: 10%;
+  font-size: 25px;
+  color: #fff;
+}
+.hero {
+  font-size: 35px;
+  color: #fff;
+}
+.heroo{
+  font-size: 25px;
+  color: #fff;
+}
+.herooo{
+  font-size: 15px;
+  color: #fff;
+}
+.buttonss{
+background-color: #fff;
+width: 30%;
+border-radius: 5px;
+padding: 2%;
+color: #000;
+}
+.hdd{
+  color: #fff;
+  margin-left: 40%;
+  
+}
+
+
+
+
+.main{
+  Width: 100%;
+  Height: 100vh;
+  Display: flex;
+  Align-items: center;
+  Justify-content: center;
+  Background-position: center;
+ background-color: #000;
+}
+.profile-card{
+  Display: flex;
+  Flex-direction: column;
+  Align-items: center;
+  Max-width: 400px;
+  Width: 100%;
+  Border-radius: 25px;
+  Padding: 30px;
+  Border: 1px solid #fff;
+  Box-shadow: 0 5px 20px rgba(240, 243, 243, 0.897);
+}
+.image{
+  Position: relative;
+  Height: 150px;
+  Width: 150px;
+}
+.image .profile-pic{
+  Width: 100%;
+  Height: 100%;
+  Object-fit: cover;
+  Border-radius: 50%;
+  Box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+.data{
+  Display: flex;
+  Flex-direction: column;
+  Align-items: center;
+  Margin-top: 15px;
+  color: #fff;
+}
+.data h2{
+  Font-size: 33px;
+  Font-weight: 600;
+  color: #fff;
+}
+Span{
+  Font-size: 18px;
+  color: #fff;
+}
+.row{
+  Display: flex;
+  Align-items: center;
+ color: #fff;
+  Margin-top: 30px;
+}
+.row .info{
+  Text-align: center;
+  Padding: 0 20px;
+}
+.buttons{
+  Display: flex;
+  Align-items: center;
+  Margin-top: 30px;
+}
+.buttons .btn{
+  Color: #fff;
+  Text-decoration: none;
+  Margin: 0 20px;
+  Padding: 8px 25px;
+  Border-radius: 25px;
+  Font-size: 18px;
+  White-space: nowrap;
+  Background: linear-gradient(to left, #221ed8 0%, #06123a 100%);
+}
+.buttons .btn:hover{
+  Box-shadow: inset 0 5px 20px rgba(243, 245, 247, 0.897);
+}
+.hero1{
+  margin-left: 7%;
+  font-size: 30px;
+  color: #fff;
+}
+.hdd11{
+  
+  color: #fff;
+  font-size:30px;
+}
+.hddd11{
+  color: #fff;
+  font-size: medium;
+}
+
+
+      </style>
+    </head>
+   <body>
+      <nav>
+         <div class="menu-icon">
+            <span class="fas fa-bars"></span>
+         </div>
+         <div class="logo">
+            kryptovest
+         </div>
+         <div class="nav-items">
+            <li><a href="kryptovestt.html">Home</a></li>
+            <li><a href="">About</a></li>
+            <li><a href="plan.html">Plan</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            
+         </div>
+         <div class="search-icon">
+            <span class="fas fa-search"></span>
+         </div>
+         <div class="cancel-icon">
+            <span class="fas fa-times"></span>
+         </div>
+         <form action="">
+            <input type="search" class="search-data" placeholder="Search" required>
+            <button type="submit" class="fas fa-search"></button>
+         </form>
+      </nav>
+
+            <br>
+            <br>
+
+          </div> 
+         </div>
+      </div>
+      
+      <div class="her">
+      <h1 class="hero">Kryptovest</h1>
+  
+      <h3 class="heroo">at the essence of your wealth</h3>
+    <br>
+      <p class="herooo">If you're not making money from forex,
+      then you're doing the
+      <br> wrong thing.
+      Cause Kryptovest is an investment platform,
+      with 
+      <br>highly skilled traders who will pull funds,
+      from the bearish and
+      <br> bullish market,and return
+      the profit to you.In accordance to your investment 
+       
+    </p>
+    <br>
+    <button class="buttonss">
+      
+      <a href="plan.html" onclick="alert('lets get started');">Get Started</a>
+    </button>
+     </div>
+
+     
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br> 
+      <div>              
+   <img src="03.png" class="jumping-image" > </img>
+   <br>
+   <br>
+   <h3 class="hdd">a platform full of
+    <br> wonderful investment packages</h3>
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+    <div>              
+      <img src="02.png" class="jumping-image" > </img>
+      <br>
+      <br>
+      <h3 class="hdd">our customer support always active
+       <br> 24/7 to attend to your request</h3>
+       </div>
+       
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+    <div>              
+      <img src="04.png" class="jumping-image" > </img>
+      <br>
+      <br>
+      <h3 class="hdd">With Kryptovest you don't
+       <br> you don't have to woory about your security
+      <br>cause we gat you covered with our secured
+      <br>payment method
+    </h3>
+       </div>
+          <br>
+          <br>
+          <br>
+          <br>
+          <h1 class="hero1">Kryptovest investment plans</h1>
+          <br>
+          <br>
+       <section class="main">
+        <div class="profile-card">
+          <div class="image">
+            <img src="btc.jpg" alt="" class="profile-pic">
+          </div>
+          <div class="data">
+            <h2>Platinium Pack</h2>
+            <span>$10,000</span>
+          </div>
+          <div class="row">
+            <div class="info">
+              <h3>Daily Return</h3>
+              <span>$5,000</span>
+            </div>
+            <div class="info">
+            </div>
+            <div class="info">
+              <h3>Total Return</h3>
+              <span>$150,000</span>
+            </div>
+          </div>
+          <div class="buttons">
+            <a href="plan.html" class="btn">invest</a>
+          </div>
+        </div>
+        </section>
+
+
+        <section class="main">
+          <div class="profile-card">
+            <div class="image">
+              <img src="btc.jpg" alt="" class="profile-pic">
+            </div>
+            <div class="data">
+              <h2>Daimond Pack</h2>
+              <span>$5,000</span>
+            </div>
+            <div class="row">
+              <div class="info">
+                <h3>Daily Return</h3>
+                <span>$1,500</span>
+              </div>
+              <div class="info">
+              </div>
+              <div class="info">
+                <h3>Total Return</h3>
+                <span>$60,000</span>
+              </div>
+            </div>
+            <div class="buttons">
+              <a href="plan.html" class="btn">invest</a>
+            </div>
+          </div>
+          </section>
+
+          <section class="main">
+          <div class="profile-card">
+            <div class="image">
+              <img src="btc.jpg" alt="" class="profile-pic">
+            </div>
+            <div class="data">
+              <h2>Gold Pack</h2>
+              <span>$2,500</span>
+            </div>
+            <div class="row">
+              <div class="info">
+                <h3>Daily Return</h3>
+                <span>$1,500</span>
+              </div>
+              <div class="info">
+              </div>
+              <div class="info">
+                <h3>Total Return</h3>
+                <span>$45,000</span>
+              </div>
+            </div>
+            <div class="buttons">
+              <a href="plan.html" class="btn">invest</a>
+            </div>
+          </div>    
+        </section>
+
+        <section class="main">
+          <div class="profile-card">
+            <div class="image">
+              <img src="btc.jpg" alt="" class="profile-pic">
+            </div>
+            <div class="data">
+              <h2>Bronze Pack</h2>
+              <span>$1,240</span>
+            </div>
+            <div class="row">
+              <div class="info">
+                <h3>Daily Return</h3>
+                <span>$530</span>
+              </div>
+              <div class="info">
+              </div>
+              <div class="info">
+                <h3>Total Return</h3>
+                <span>$15,900</span>
+              </div>
+            </div>
+            <div class="buttons">
+              <a href="plan.html" class="btn">invest</a>
+            </div>
+          </div>    
+        </section>
+
+       <br>
+       <br>
+
+       <br>
+       <br> 
+       
+       <br>
+       <br> 
+       
+       <br>
+       <br> 
+       
+       <br>
+       <br> 
+         <h1 align="center" class="hdd11" id="target">About Us</h1>
+         <p align="center" class="hddd11">If you're not making money from forex,
+            then you're doing the wrong thing.
+            Cause Kryptovest is an investment platform,
+            with highly skilled traders who will pull funds,
+            from the bearish and bullish market,and return
+            the profit to you.In accordance to your investment 
+      
+            You might be wondering how we are able,
+            
+            to pay you such amount of money from investing
+            
+            well it's simple. 
+            
+            We use the money you invested in our platform,
+            
+            to trade with heavy instrumets such as,BTC/USD,ETH/USD
+             
+             binaries like Volatility75,Jump index etc.
+             
+             which will split the profit in twos one for the investor
+             
+             and one for the traders on the platform 
+            </p>
+             <br>
+            <br>
+            <br>
+            <br>
+           
+
+          <script type="text/javascript">
+            
+           function scroll(){
+            location.href ="#target"
+           }
+        const menuBtn = document.querySelector(".menu-icon span");
+         const searchBtn = document.querySelector(".search-icon");
+         const cancelBtn = document.querySelector(".cancel-icon");
+         const items = document.querySelector(".nav-items");
+         const form = document.querySelector("form");
+         menuBtn.onclick = ()=>{
+           items.classList.add("active");
+           menuBtn.classList.add("hide");
+           searchBtn.classList.add("hide");
+           cancelBtn.classList.add("show");
+         }
+         cancelBtn.onclick = ()=>{
+           items.classList.remove("active");
+           menuBtn.classList.remove("hide");
+           searchBtn.classList.remove("hide");
+           cancelBtn.classList.remove("show");
+           form.classList.remove("active");
+           cancelBtn.style.color = "#ff3d00";
+         }
+         searchBtn.onclick = ()=>{
+           form.classList.add("active");
+           searchBtn.classList.add("hide");
+           cancelBtn.classList.add("show");
+         }
+      </script>
+   </body>
+</html>
